@@ -1,0 +1,263 @@
+ESTUDO DIRIGIDO 2
+
+Teoria
+
+1- Arrays e vetores.
+2- Com os vetores, menos variáveis precisam ser declaradas e menos espaço é utilizado.
+3- a) Índice.
+    b) Determinado.
+    c) Dinâmico.
+4- Percorrer item por item da lista, e fazer alguma coisa com ele.
+5- for, while ou foreach.
+6- Blocos que executam tarefas a qualquer momento.
+7- Facilita a não repetição.
+8- Declarar é a assinatura da função, em que o compilador a procura quando é chamada (para execução).
+9- É uma variável que existe e é usada somente durante a execução da função.
+10- Usada para retornar a execução do código para a linha em que foi chamada a função.
+11- Sim.  As vantagens se baseiam na praticidade da escritura do código. Por exemplo, no nosso código nós fizemos uma função void que apresentasse as opções toda que era chamada. Poderíamos também ter usado as funções para especificar os casos um e dois que se repetiam várias vezes. 
+
+Algoritmos de Repetição
+ 
+1-  369
+2- 12345
+
+Listas
+
+1- 2345
+2- 99
+3- CuritibaMedianeiraFlorianopolisJoinville
+
+Prática
+
+-QUESTÃO 1
+
+#include <iostream>
+using namespace std;
+
+void NUMEROS(){
+
+for (int x = 1; x < 101; x++){
+    cout << x << endl;
+}
+}
+
+int main(){
+
+    NUMEROS();
+
+return 0;
+}
+
+-QUESTÃO 2 
+
+#include <iostream>
+
+using namespace std;
+
+int SOMA(int x, int y){
+    x = x + y;
+    return x;
+}
+int main(){
+    int x, y;
+    cout << "Digite dois números que deseje somar." << endl;
+    cin >> x >> y;
+    cout << SOMA(x, y);
+}
+
+
+-QUESTÃO 3
+
+#include <iostream>
+using namespace std;
+
+int soma2(int num1, int num2, int num3){
+    return num1 + num2 + num3;
+}
+
+int main(){
+    int x, y, z;
+
+    cout<< "Digite tres numeros para receber sua soma:\n";
+    cin >> x >> y >> z;
+
+	cout << "A soma deles eh: " << soma2(x, y, z);
+
+	return 0;
+}
+
+-QUESTÃO 4
+
+#include <iostream>
+
+using namespace std;
+
+double CONVERTE_MOEDA(int valor, double moeda2){
+    double result;
+    string moeda;
+    result = valor / moeda2;
+    return result;
+}
+
+int main(){
+    double moeda2, euro, dolar;
+    int valor;
+    string moeda;
+    setlocale(LC_ALL, "Portuguese");
+
+    cout << "Digite um valor em real e escolha se deseja converter para euros ou dolares." << endl;
+    cin >> valor >> moeda;
+
+    if(moeda == "euro"){
+        moeda2 = 4.56;
+        cout << "Seu valor convertido é: " << CONVERTE_MOEDA(valor, moeda2) << endl;
+    }
+    else if(moeda == "dolar"){
+        moeda2 = 4.17;
+        cout << "Seu valor convertido é: " << CONVERTE_MOEDA(valor, moeda2) << endl;
+    }
+}
+
+-QUESTÃO 5
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string palavra;
+
+void sera_que_eh_palindromo(string palavra){
+    string reverso = palavra;
+    reverse(reverso.begin(), reverso.end());
+
+    if(palavra == reverso){
+        cout << "\nVerdadeiro\n";
+    } else {
+    	cout << "\nFalso\n";
+    }
+}
+
+int main() {
+	cout << "Digite uma palavra para saber se eh *palindroma* ou nao:\n";
+	cin >> palavra;
+	
+	sera_que_eh_palindromo(palavra);
+	
+	return 0;
+}
+
+-QUESTÃO 6
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int i, p = 0;
+    string res;
+    string questions[5] = {"Telefonou para a vítima?", 
+                            "Esteve no local do crime?",
+                            "Mora perto da vítima?",
+                            "Devia para a vítima?", 
+                            "Já trabalhou com a vítima?"};
+
+    for(i = 0; i < 5 ; i++){
+        cout << questions[i] << endl;
+        cin >> res;
+            if(res == "sim")
+                p++;
+    }
+    
+    if(p == 2)
+        cout << "Suspeita." << endl;
+ 
+    else if(p == 3 || p == 4)
+        cout << "Cúmplice." << endl;
+    
+    else if(p == 5)
+        cout << "Assassino." << endl;
+        
+    else
+        cout << "Inocente." << endl;
+    
+    return 0;
+}
+
+-QUESTÃO 7
+
+#include <iostream>
+using namespace std;
+
+string mensagem;
+
+void lowercase(string mensagem){
+    
+    for(char x:mensagem){
+        x = tolower(x);
+        cout << x;
+    }
+    
+}
+
+int main(){
+    
+    cout << "iNSiRa uMa mENsaGeM pArA VeR elA eM lowerCASE:\n";
+    
+    getline(cin, mensagem);
+    
+    lowercase(mensagem);
+
+    return 0;
+}
+
+
+-QUESTÃO 8
+
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+
+using namespace std;
+
+double bhaskara1(double a, double b, double c){
+    double delta, x1, x2;
+    
+    cout << setprecision(1);
+    
+    delta = pow(((b * b) - (4 * a * c)), 0.5);
+    x1 = ((-1 * b) + delta)/(2 * a);
+    
+    return x1;
+}
+double bhaskara2(double a, double b, double c){
+    double delta, x1, x2;
+    
+    cout << setprecision(1);
+    
+    delta = pow(((b * b) - (4 * a * c)), 0.5);
+    x2 = ((-1 * b) - delta)/(2 * a);
+
+    return x2;
+}
+int main(){
+    setlocale(LC_ALL, "Portuguese");
+    double a, b, c;
+    double delta, x1, x2;
+
+    cout << setprecision(1);
+
+    cout << "Digite três números." << endl;
+    cin >> a >> b >> c;
+    
+    if(delta < 0){
+        cout << "Não é possível realizar essa operação pois não existe raiz quadrada de número negativo." << endl;
+    }
+    else if(delta == 0){
+        cout << "A função possui raiz dupla: " << x1 << endl;
+    }else{
+        
+       cout << "Essas são as suas raízes: " << bhaskara1(a, b, c) << " e " << bhaskara2(a, b, c);
+       
+    }
+    return 0;
+}
